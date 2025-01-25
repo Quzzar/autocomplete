@@ -1,7 +1,7 @@
 import { ActionIcon, Box, Textarea, Text, Group, Avatar } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { IconCopy } from '@tabler/icons-react';
-import { use, useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import autocompleteText from './common/autocomplete';
 import Icon from '../public/favicon.png';
 
