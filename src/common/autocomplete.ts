@@ -3,12 +3,16 @@
 const AI_FUNCTION_URL = `https://msgback.azurewebsites.net/api/OpenAICompletion?code=URUj647XlDjbH1PMiOXrVZQi7OEoBGezlfnb5VOfOMeqAzFuD92TcQ==`;
 
 export default async function autocompleteText(text: string, prev: string[]) {
-  if (text.endsWith('..')) {
-    const completeSentence = text.endsWith('...');
+  if (text.endsWith('..') || text.endsWith('…')) {
+    const completeSentence = text.endsWith('...') || text.endsWith('…');
 
     // Remove dots
     if (completeSentence) {
-      text = text.slice(0, -3);
+      if (text.endsWith('...')) {
+        text = text.slice(0, -3);
+      } else if (text.endsWith('…')) {
+        text = text.slice(0, -1);
+      }
     } else {
       text = text.slice(0, -2);
     }

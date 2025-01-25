@@ -1,7 +1,7 @@
 import { ActionIcon, Box, Textarea, Text, Group, Avatar } from '@mantine/core';
 import { useDebouncedValue } from '@mantine/hooks';
 import { IconCopy } from '@tabler/icons-react';
-import { useEffect, useState } from 'react';
+import { use, useEffect, useRef, useState } from 'react';
 import autocompleteText from './common/autocomplete';
 import Icon from '../public/favicon.png';
 
@@ -9,10 +9,12 @@ export default function MainInput() {
   const [value, setValue] = useState('');
   const [debouncedValue] = useDebouncedValue(value, 500);
   const [prev, setPrev] = useState<Map<string, string[]>>(new Map());
+  const completing = useRef(false);
 
   useEffect(() => {
     const value = debouncedValue.trim();
-    if (!value) return;
+    if (!value || completing.current) return;
+    completing.current = true;
     autocompleteText(value, prev.get(value) ?? [])
       .then((r) => {
         if (r) {
@@ -23,6 +25,7 @@ export default function MainInput() {
           prevCompletions.push(r.generated);
           setPrev(new Map(prev.set(value, prevCompletions)));
         }
+        completing.current = false;
       })
       .catch((error) => {
         console.error(error);
