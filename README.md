@@ -1,5 +1,3 @@
-# Mantine Vite template
+# Quzzar's Autocomplete
 
-Get started with the template by clicking `Use this template` button on the top of the page.
-
-[Documentation](https://mantine.dev/guides/vite/)
+A simple auto completer for my own personal use. End sentence with `..` to complete the next word or `...` to finish sentence.
