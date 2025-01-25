@@ -52,7 +52,9 @@ export default function MainInput() {
           WebkitBackdropFilter: 'blur(4px)',
         }}
         onClick={() => {
-          navigator.clipboard.writeText(value);
+          if (value.trim().length > 0) {
+            navigator.clipboard.writeText(value);
+          }
         }}
       >
         <IconCopy style={{ width: '70%', height: '70%' }} stroke={1.5} />
