@@ -67,7 +67,7 @@ export default function MainInput() {
       </Group>
       <Textarea
         size='lg'
-        placeholder='Your text here...'
+        placeholder='Start typing (autocomplete by ending with ".." for next word or "..." to complete sentence)'
         styles={{
           input: {
             height: 'calc(100dvh - 50px)',
